@@ -40,13 +40,14 @@ export const useToxicity = () => {
     const handler = debounce((stats: Stats) => {
       if (model) {
         // is there a good way to stop an ongoing classification
+        // off load to a worker
         model.classify(stats.source).then(setPredictions);
       }
     }, 1000);
 
     stream.addEventListener(handler);
 
-    model?.classify("").then(setPredictions);
+    handler();
 
     return () => {
       stream.removeEventListener(handler);

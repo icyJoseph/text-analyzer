@@ -34,6 +34,7 @@ function App() {
       </header>
       <main className="pure-u-1">
         <section className="pure-u-1-5">
+          <h2 className="sub-header">Toxicity Analysis</h2>
           <RenderWithPredictions>
             {({ predictions }) => (
               <ul>
