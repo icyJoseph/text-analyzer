@@ -37,23 +37,22 @@ function App() {
           <RenderWithPredictions>
             {({ predictions }) => (
               <ul>
-                {predictions.map((prediction) => {
-                  const { match } = prediction.results[0];
-                  const emojiProps = {
-                    symbol: match ? "⚠️" : "✔️",
-                    title: match ? "Yes" : "No",
-                    ariaLabel: match ? "Yes" : "Noe"
-                  };
-
-                  return (
+                {predictions
+                  .slice(0)
+                  .sort((a, b) => b.label.localeCompare(a.label))
+                  .filter((prediction) => prediction.results[0].match)
+                  .map((prediction) => (
                     <li key={prediction.label}>
                       <span>{prediction.label}</span>
                       <p>
-                        <Emoji {...emojiProps} />
+                        <Emoji
+                          symbol="⚠️"
+                          title={prediction.label}
+                          ariaLabel="Warning"
+                        />
                       </p>
                     </li>
-                  );
-                })}
+                  ))}
               </ul>
             )}
           </RenderWithPredictions>
