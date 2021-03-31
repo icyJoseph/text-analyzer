@@ -7,6 +7,7 @@ type Stats = {
   minutes: number;
   time: number;
   words: number;
+  characters: number;
 };
 
 type VoidCallback = () => void;
@@ -27,13 +28,18 @@ const createStream = (): ReaderStream => {
     text: "0 min read",
     minutes: 0,
     time: 0,
-    words: 0
+    words: 0,
+    characters: 0
   };
 
   const calculate = (text: string) => {
     const result = reader(text);
+    const characters = text
+      .split("")
+      .map((x) => x.trim())
+      .filter((x) => x).length;
 
-    stats = result;
+    stats = { ...result, characters };
 
     listeners.forEach((listener) => listener(stats));
   };

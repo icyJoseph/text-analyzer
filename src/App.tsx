@@ -17,7 +17,15 @@ function App() {
       <main className="pure-u-1">
         <section className="pure-u-1-5"></section>
         <section className="pure-u-3-5">
-          <p className="stats">{stats.text}</p>
+          <div className="stats-view pure-u-1">
+            <span className="stats pure-u-1-3">{stats.text}</span>
+            <span className="stats pure-u-1-3">
+              {stats.words} {stats.words === 1 ? "word" : "words"}
+            </span>
+            <span className="stats pure-u-1-3">
+              {stats.characters} characters
+            </span>
+          </div>
           <TextArea />
         </section>
       </main>

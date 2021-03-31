@@ -1,26 +1,38 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useMemo } from "react";
+import { useSubscription } from "use-subscription";
 import { stream } from "../reader/stream";
 
 import "../styles/growArea.css";
 
+const useSubscribeToTextArea = () => {
+  const ref = useRef<HTMLTextAreaElement>(null);
+  const subscription = useMemo(
+    () => ({
+      getCurrentValue: () => ref.current?.value,
+      subscribe: (callback: () => void) => {
+        const current = ref.current;
+        current?.addEventListener("input", callback);
+        return () => current?.removeEventListener("input", callback);
+      }
+    }),
+    []
+  );
+
+  const value = useSubscription(subscription);
+
+  return { ref, value };
+};
+
 export const TextArea = () => {
-  const textAreaRef = useRef<HTMLTextAreaElement>(null);
   const parentRef = useRef<HTMLDivElement>(null);
+  const { ref: textAreaRef, value } = useSubscribeToTextArea();
 
   useEffect(() => {
-    if (parentRef.current && textAreaRef.current) {
+    if (parentRef.current) {
       const parent = parentRef.current;
-      const textArea = textAreaRef.current;
-
-      const handler = () => {
-        parent.dataset.replicatedValue = textArea.value;
-      };
-
-      textArea.addEventListener("input", handler);
-
-      return () => textArea.removeEventListener("input", handler);
+      parent.dataset.replicatedValue = value;
     }
-  }, []);
+  }, [value]);
 
   useEffect(() => {
     if (textAreaRef.current) {

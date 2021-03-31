@@ -1,4 +1,9 @@
+.stats-view {
+  margin: 8px auto;
+}
+
 .stats {
   font-weight: 300;
   color: #333;
+  text-align: center;
 }
