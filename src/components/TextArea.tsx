@@ -31,7 +31,7 @@ export const TextArea = () => {
 
   return (
     <div className="grow-wrap" ref={parentRef}>
-      <textarea ref={textAreaRef} placeholder="Text to measure..."></textarea>
+      <textarea ref={textAreaRef} placeholder="..."></textarea>
     </div>
   );
 };

@@ -1,6 +1,8 @@
 .grow-wrap {
   display: grid;
   word-break: break-all;
+  border: none;
+  outline: none;
 }
 
 .grow-wrap::after {
@@ -12,12 +14,18 @@
 .grow-wrap > textarea {
   resize: none;
   overflow: hidden;
+  border: none;
+  outline: none;
 }
 
 .grow-wrap > textarea,
 .grow-wrap::after {
-  border: 1px solid black;
+  border-bottom: 1px solid #333;
   padding: 0.5rem;
   font: inherit;
   grid-area: 1 / 1 / 2 / 2;
+}
+
+.grow-wrap > textarea:focus {
+  border-bottom: 2px solid #333;
 }

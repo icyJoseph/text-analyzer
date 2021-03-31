@@ -23,7 +23,7 @@ type Listener = (result: Stats) => void;
 const createStream = (): ReaderStream => {
   const listeners: Listener[] = [];
 
-  let _stats = {
+  let stats = {
     text: "0 min read",
     minutes: 0,
     time: 0,
@@ -33,14 +33,14 @@ const createStream = (): ReaderStream => {
   const calculate = (text: string) => {
     const result = reader(text);
 
-    _stats = result;
+    stats = result;
 
-    listeners.forEach((listener) => listener(_stats));
+    listeners.forEach((listener) => listener(stats));
   };
 
   return {
     get stats() {
-      return { ..._stats };
+      return stats;
     },
     connect: (element: HTMLTextAreaElement) => {
       const handler = () => calculate(element.value);
@@ -76,7 +76,5 @@ export const useReadingTime = () => {
     []
   );
 
-  const value = useSubscription(subscription);
-
-  return value;
+  return useSubscription(subscription);
 };
