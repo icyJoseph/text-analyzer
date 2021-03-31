@@ -1,0 +1,47 @@
+.prediction-limit {
+  border-bottom: 1px solid var(--border-color);
+  height: unset;
+}
+
+.predictions {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: row;
+  list-style: none;
+  min-height: 75px;
+  width: 100%;
+  align-items: unset;
+  justify-content: start;
+  flex-wrap: wrap;
+}
+
+.predictions li {
+  margin: 8px;
+  padding: 4px;
+  min-width: 120px;
+  text-align: center;
+}
+
+.predictions:after {
+  width: 100%;
+  text-align: center;
+}
+
+.predictions:empty:after {
+  content: "Looks good";
+}
+
+@media (min-width: 768px) {
+  .predictions {
+    flex-direction: column;
+    align-items: unset;
+    justify-content: center;
+  }
+
+  .prediction-limit {
+    height: 100%;
+    border-bottom: none;
+    border-right: 1px solid var(--border-color);
+  }
+}

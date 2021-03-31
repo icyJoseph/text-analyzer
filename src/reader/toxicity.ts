@@ -31,7 +31,7 @@ export const useToxicity = () => {
   useEffect(() => {
     import("@tensorflow/tfjs").then(() => {
       import("@tensorflow-models/toxicity").then(({ load }) => {
-        load(0.8, labels.slice(0)).then((model) => setModel(model));
+        load(0.9, labels.slice(0)).then((model) => setModel(model));
       });
     });
   }, []);
@@ -51,6 +51,8 @@ export const useToxicity = () => {
       stream.removeEventListener(handler);
     };
   }, [model]);
+
+  console.log(predictions);
 
   return predictions;
 };

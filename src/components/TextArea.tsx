@@ -43,7 +43,10 @@ export const TextArea = () => {
 
   return (
     <div className="grow-wrap" ref={parentRef}>
-      <textarea ref={textAreaRef} placeholder="..."></textarea>
+      <textarea
+        ref={textAreaRef}
+        placeholder="You have something to say..."
+      ></textarea>
     </div>
   );
 };

@@ -1,5 +1,7 @@
 import "./styles/header.css";
 import "./styles/stats.css";
+import "./styles/grid.css";
+import "./styles/predictions.css";
 
 import React, { Fragment } from "react";
 import { Emoji } from "./components/Emoji";
@@ -28,16 +30,16 @@ const RenderWithReadingStats = ({
 function App() {
   return (
     <Fragment>
-      <header className="header pure-u-1">
+      <header className="header pure-u-1 entry">
         <h1>Hello!</h1>
         <p>Type something</p>
       </header>
-      <main className="pure-u-1">
-        <section className="pure-u-1-5">
-          <h2 className="sub-header">Toxicity Analysis</h2>
+      <main className="pure-u-1 entry">
+        <section className="pure-u-1 pure-u-md-3-8 pure-u-lg-1-4 grid prediction-limit">
+          <h2 className="sub-heading">Toxicity Analysis</h2>
           <RenderWithPredictions>
             {({ predictions }) => (
-              <ul>
+              <ul className="predictions">
                 {predictions
                   .slice(0)
                   .sort((a, b) => b.label.localeCompare(a.label))
@@ -58,7 +60,8 @@ function App() {
             )}
           </RenderWithPredictions>
         </section>
-        <section className="pure-u-3-5">
+
+        <section className="pure-u-1 pure-u-md-5-8 pure-u-lg-3-4 grid">
           <RenderWithReadingStats>
             {({ stats }) => (
               <div className="stats-view pure-u-1">
@@ -72,9 +75,12 @@ function App() {
               </div>
             )}
           </RenderWithReadingStats>
+
           <TextArea />
         </section>
       </main>
+
+      <footer className="pure-u-1 entry"></footer>
     </Fragment>
   );
 }
