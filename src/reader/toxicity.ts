@@ -1,8 +1,5 @@
-import "@tensorflow/tfjs";
 import { useEffect, useState } from "react";
-
-// TODO: Lazy load
-import { load, ToxicityClassifier } from "@tensorflow-models/toxicity";
+import { ToxicityClassifier } from "@tensorflow-models/toxicity";
 import { stream, Stats } from "./stream";
 import { debounce } from "./helpers";
 
@@ -32,7 +29,11 @@ export const useToxicity = () => {
   const [predictions, setPredictions] = useState<Predictions>([]);
 
   useEffect(() => {
-    load(0.8, labels.slice(0)).then((model) => setModel(model));
+    import("@tensorflow/tfjs").then(() => {
+      import("@tensorflow-models/toxicity").then(({ load }) => {
+        load(0.8, labels.slice(0)).then((model) => setModel(model));
+      });
+    });
   }, []);
 
   useEffect(() => {
