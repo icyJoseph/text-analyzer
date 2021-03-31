@@ -47,8 +47,6 @@ export const useToxicity = () => {
 
     stream.addEventListener(handler);
 
-    handler();
-
     return () => {
       stream.removeEventListener(handler);
     };
