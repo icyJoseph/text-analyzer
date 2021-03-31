@@ -24,8 +24,6 @@ export const labels = [
 
 export type Labels = typeof labels[number];
 
-type Listener = () => void;
-
 export const useToxicity = () => {
   const [model, setModel] = useState<ToxicityClassifier | null>(null);
   const [predictions, setPredictions] = useState<Predictions>([]);
@@ -35,7 +33,7 @@ export const useToxicity = () => {
     setLoading(true);
     import("@tensorflow/tfjs").then(() => {
       import("@tensorflow-models/toxicity").then(({ load }) => {
-        load(0.9, labels.slice(0))
+        load(0.5, labels.slice(0))
           .then((model) => setModel(model))
           .then(() => setLoading(false));
       });
