@@ -6,6 +6,7 @@ import "./styles/predictions.css";
 import React, { Fragment } from "react";
 import { Emoji } from "./components/Emoji";
 import { TextArea } from "./components/TextArea";
+import { Spinner } from "./components/Spinner";
 import { Stats, useReadingTime } from "./reader/stream";
 import { useToxicity, Predictions } from "./reader/toxicity";
 
@@ -14,7 +15,8 @@ const RenderWithPredictions = ({
 }: {
   children: ({ predictions }: { predictions: Predictions }) => JSX.Element;
 }) => {
-  const predictions = useToxicity();
+  const { predictions, loading } = useToxicity();
+  if (loading) return <Spinner />;
   return children({ predictions });
 };
 
