@@ -2,12 +2,13 @@ import { useMemo } from "react";
 import { useSubscription } from "use-subscription";
 import reader from "reading-time";
 
-type Stats = {
+export type Stats = {
   text: string;
   minutes: number;
   time: number;
   words: number;
   characters: number;
+  source: string;
 };
 
 type VoidCallback = () => void;
@@ -29,7 +30,8 @@ const createStream = (): ReaderStream => {
     minutes: 0,
     time: 0,
     words: 0,
-    characters: 0
+    characters: 0,
+    source: ""
   };
 
   const calculate = (text: string) => {
@@ -39,7 +41,7 @@ const createStream = (): ReaderStream => {
       .map((x) => x.trim())
       .filter((x) => x).length;
 
-    stats = { ...result, characters };
+    stats = { ...result, characters, source: text };
 
     listeners.forEach((listener) => listener(stats));
   };
