@@ -1,9 +1,11 @@
 .grow-wrap {
   display: grid;
+  max-width: 85ch;
   word-break: break-all;
   border: none;
   outline: none;
   background-color: transparent;
+  margin: 0 auto;
 }
 
 .grow-wrap::after {
