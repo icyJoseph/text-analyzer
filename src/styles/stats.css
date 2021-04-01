@@ -6,4 +6,35 @@
   font-weight: 300;
   color: var(--font-color);
   text-align: center;
+  display: grid;
+  margin: 16px auto;
+  place-items: center;
+}
+
+.first-word {
+  font-weight: 200;
+  font-size: 1rem;
+}
+
+.first-word:after {
+  content: "\A";
+}
+
+.rest-of-sentence {
+  font-weight: 300;
+  font-size: 0.9rem;
+}
+
+@media (min-width: 568px) {
+  .stats {
+    display: inline-grid;
+  }
+
+  .first-word {
+    font-size: 1.5rem;
+  }
+
+  .rest-of-sentence {
+    font-size: 1.2rem;
+  }
 }

@@ -1,8 +1,7 @@
+import "../styles/growArea.css";
 import React, { useEffect, useRef, useMemo } from "react";
 import { useSubscription } from "use-subscription";
 import { stream } from "../reader/stream";
-
-import "../styles/growArea.css";
 
 const useSubscribeToTextArea = () => {
   const ref = useRef<HTMLTextAreaElement>(null);

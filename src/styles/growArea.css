@@ -3,6 +3,7 @@
   word-break: break-all;
   border: none;
   outline: none;
+  background-color: transparent;
 }
 
 .grow-wrap::after {

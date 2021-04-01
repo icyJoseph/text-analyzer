@@ -12,8 +12,14 @@ body {
 :root {
   --gray-palette: 221, 221, 221;
   --dark-palette: 51, 51, 51;
+  --light-palette: 248, 248, 248;
   --border-color: rgba(var(--gray-palette), 1);
   --font-color: rgba(var(--dark-palette), 1);
+  --background-color: rgba(var(--light-palette), 1);
+}
+
+body {
+  background-color: var(--background-color);
 }
 
 .app {
