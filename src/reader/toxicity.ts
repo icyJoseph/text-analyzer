@@ -29,6 +29,14 @@ export const useToxicity = () => {
   const [predictions, setPredictions] = useState<Predictions>([]);
   const [loading, setLoading] = useState(false);
 
+  // useSubscription instead
+  useEffect(() => {
+    const handler = () => setLoading(true);
+    stream.addEventListener(handler);
+    return () => stream.removeEventListener(handler);
+  }, []);
+
+  // off load to a worker
   useEffect(() => {
     setLoading(true);
     import("@tensorflow/tfjs").then(() => {
@@ -40,17 +48,10 @@ export const useToxicity = () => {
     });
   }, []);
 
-  useEffect(() => {
-    const handler = () => setLoading(true);
-    stream.addEventListener(handler);
-    return () => stream.removeEventListener(handler);
-  }, []);
-
+  // off load to a worker
   useEffect(() => {
     const handler = debounce((stats: Stats) => {
       if (model) {
-        // is there a good way to stop an ongoing classification
-        // off load to a worker
         model
           .classify(stats.source)
           .then(setPredictions)
