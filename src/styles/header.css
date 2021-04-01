@@ -3,7 +3,7 @@
   margin-bottom: 1rem;
   color: var(--font-color);
   text-align: center;
-  padding: 2.5rem 1rem 0;
+  padding: 2.5rem 0 0;
 }
 
 .header h1 {
@@ -23,4 +23,10 @@
 .sub-header {
   color: var(--font-color);
   font-weight: 300;
+}
+
+@media (min-width: 768px) {
+  .header {
+    padding: 2.5rem 1rem 0;
+  }
 }

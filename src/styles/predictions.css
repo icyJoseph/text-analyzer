@@ -1,19 +1,17 @@
-.prediction-limit {
-  border-bottom: 1px solid var(--border-color);
-  height: unset;
-}
-
 .predictions {
   margin: 0;
   padding: 0;
-  display: flex;
-  flex-direction: row;
+  columns: 1;
+  display: block;
   list-style: none;
   min-height: 75px;
   width: 100%;
-  align-items: unset;
-  justify-content: start;
-  flex-wrap: wrap;
+}
+
+.prediction-section {
+  border-bottom: 1px solid var(--border-color);
+  height: unset;
+  min-height: 250px;
 }
 
 .predictions li {
@@ -32,6 +30,26 @@
   content: "Looks good";
 }
 
+.predictions .emoji {
+  margin-left: 4px;
+}
+
+@media (min-width: 320px) {
+  .predictions {
+    columns: 2;
+  }
+}
+
+@media (min-width: 414px) {
+  .predictions {
+    display: flex;
+    flex-direction: row;
+    align-items: unset;
+    justify-content: start;
+    flex-wrap: wrap;
+  }
+}
+
 @media (min-width: 768px) {
   .predictions {
     flex-direction: column;
@@ -39,7 +57,7 @@
     justify-content: center;
   }
 
-  .prediction-limit {
+  .prediction-section {
     height: 100%;
     border-bottom: none;
     border-right: 1px solid var(--border-color);

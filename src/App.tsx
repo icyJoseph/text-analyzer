@@ -37,8 +37,8 @@ function App() {
         <p>Type something</p>
       </header>
       <main className="pure-u-1 entry">
-        <section className="pure-u-1 pure-u-md-3-8 pure-u-lg-1-4 grid prediction-limit">
-          <h2 className="sub-heading">Toxicity Analysis</h2>
+        <section className="pure-u-1 pure-u-md-3-8 pure-u-lg-1-4 grid prediction-section">
+          <h2 className="sub-header">Toxicity Analysis</h2>
           <RenderWithPredictions>
             {({ predictions }) => (
               <ul className="predictions">
@@ -49,13 +49,11 @@ function App() {
                   .map((prediction) => (
                     <li key={prediction.label}>
                       <span>{prediction.label}</span>
-                      <p>
-                        <Emoji
-                          symbol="⚠️"
-                          title={prediction.label}
-                          ariaLabel="Warning"
-                        />
-                      </p>
+                      <Emoji
+                        symbol="⚠️"
+                        title={prediction.label}
+                        ariaLabel="Warning"
+                      />
                     </li>
                   ))}
               </ul>
