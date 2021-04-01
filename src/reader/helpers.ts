@@ -8,3 +8,5 @@ export function debounce<Args>(
     timeout = window.setTimeout(() => callback(...args), wait);
   };
 }
+
+export const head = <T>([val]: T[]) => val;
