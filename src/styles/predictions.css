@@ -9,9 +9,7 @@
 }
 
 .prediction-section {
-  border-bottom: 1px solid var(--border-color);
   height: unset;
-  min-height: 250px;
 }
 
 .predictions li {
@@ -60,6 +58,6 @@
   .prediction-section {
     height: 100%;
     border-bottom: none;
-    border-right: 1px solid var(--border-color);
+    border-left: 1px solid var(--border-color);
   }
 }
