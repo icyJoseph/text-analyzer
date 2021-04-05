@@ -17,6 +17,7 @@
 .grow-wrap > textarea {
   resize: none;
   overflow: hidden;
+  background-color: transparent;
   border: none;
   outline: none;
 }

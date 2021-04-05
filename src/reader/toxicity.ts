@@ -63,7 +63,5 @@ export const useToxicity = () => {
     };
   }, [model]);
 
-  console.log(predictions);
-
   return { predictions, loading } as const;
 };

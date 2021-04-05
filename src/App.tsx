@@ -10,9 +10,9 @@ export function App() {
       <Header />
 
       <main className="pure-u-1 entry">
-        <Analysis />
-
         <ReadingStats />
+
+        <Analysis />
       </main>
 
       <footer className="pure-u-1 entry"></footer>
